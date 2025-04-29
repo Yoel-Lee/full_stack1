@@ -1,0 +1,11 @@
+# Node modules
+client/node_modules/
+server/node_modules/
+
+# Build outputs
+client/build/
+server/dist/
+
+# IDE specific files
+.vscode/
+.idea/
