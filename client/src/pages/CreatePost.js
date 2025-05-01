@@ -3,8 +3,13 @@ import { Formik, Form, Field, ErrorMessage } from "formik";
 //css nya udah di import lewat dari App.js yang import app.css
 import * as Yup from "yup";
 import axios from "axios";
+import { useNavigate } from "react-router-dom"; 
+
 
 function CreatePost() {
+
+  const navigate = useNavigate(); 
+
   const initialValues = {
     title: "",
     postText: "",
@@ -14,7 +19,9 @@ function CreatePost() {
   const onSubmit = (data) => {
     axios.post("http://localhost:3001/posts", data).then((response) => {
       //ini buat ngirim data ke server, di localhost:3001/posts, dengan data yang ada di variabel data yang udah diambil dari form
-      //ini berhubung dengan client/routes/Posts.js, jadi ini bakal masuk ke router.post("/", async (req, res) => { di server
+      //ini berhubung dengan server/routes/Posts.js, jadi ini bakal masuk ke router.post("/", async (req, res) => { di server
+      alert("Post Created"); 
+      navigate("/"); //ini buat redirect ke halaman home, setelah post di create
     });
   };
 

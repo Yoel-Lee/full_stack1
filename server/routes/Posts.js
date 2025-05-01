@@ -8,6 +8,13 @@ router.get('/',async (req, res) => {
     res.json(listOfAllPosts); 
 });
 
+router.get('/byId/:id', async (req, res) => {
+    const id = req.params.id
+    const post = await Posts.findByPk(id); //ini buat ngambil data dari database, sesuai dengan id yang diambil dari url, misalnya id 1, ya ambil data yang id nya 1
+   res.json(post);  
+});
+
+
 router.post('/', async (req, res) => {
     const post = req.body; //apa yang ditulis di body, bakal masuk ke variabel post
     await Posts.create(post) //ini buat nambahin data ke database, sesuai dengan yang ada di body
